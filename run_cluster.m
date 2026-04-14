@@ -130,7 +130,7 @@ for r = 1:numel(replicates)
     p = rand_T(p) ;
    warning('W noise set to 0') ;
 %    p = rand_W0(p, 10.0) ;
-    p = rand_W0(p, 5.0) ;
+    p = rand_W0(p, 0.0) ;
     p.aux = update_aux(p) ;
 
     init_biomasses ;
@@ -150,7 +150,7 @@ for r = 1:numel(replicates)
 %    last_p = p ;
 %    last_d=rhs_full_flows(0,last_X',last_p);
     
-    plot_tseries ;
+%    plot_tseries ;
     
     extinct = sum(reshape(B(end,:),p.W.pars.nspecies, p.L.pars.nsites),2)<1e-12 ;
     if sum(extinct)~=p.W.pars.nspecies
@@ -164,7 +164,7 @@ for r = 1:numel(replicates)
         %    tic
         [t, X, B, R, W, Z, Y] = run_sim(p, tspan_final, 5000);
         %    toc
-            plot_tseries ;
+ %           plot_tseries ;
     end
     w = 100;
     warning('Using a mean based metadiversity function') ;
